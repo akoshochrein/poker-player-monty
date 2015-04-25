@@ -8,7 +8,7 @@ HIGH_CARDS = ['A', 'K']
 
 
 class Player:
-    VERSION = "ace low"
+    VERSION = "cleaner"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
@@ -150,6 +150,7 @@ def is_king_flush_draw(hole_cards):
     ranks = [c['rank'] for c in hole_cards]
     has_king = "K" in ranks
     return is_same_suit(hole_cards) and has_king
+
 
 def is_ace_low_offsuit(hole_cards):
     other_card = ['7', '8', '9', '10', 'J']

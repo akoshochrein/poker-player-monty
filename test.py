@@ -46,6 +46,47 @@ class PlayerTest(unittest.TestCase):
                               "current_buy_in":0,
                               "pot":0
                             }""")
+        self.game_state2 = simplejson.loads("""{
+                              "players":[
+                                {
+                                  "name":"Player 1",
+                                  "stack":1000,
+                                  "status":"active",
+                                  "bet":0,
+                                  "hole_cards":[],
+                                  "version":"Version name 1",
+                                  "id":0
+                                },
+                                {
+                                  "name":"Player 2",
+                                  "stack":1000,
+                                  "status":"active",
+                                  "bet":0,
+                                  "hole_cards":[
+                                  {
+                                      "rank": "7",
+                                      "suit": "hearts"
+                                  },
+                                  {
+                                      "rank": "9",
+                                      "suit": "spades"
+                                  }],
+                                  "version":"Version name 2",
+                                  "id":1
+                                }
+                              ],
+                              "in_action": 1,
+                              "tournament_id":"550d1d68cd7bd10003000003",
+                              "game_id":"550da1cb2d909006e90004b1",
+                              "round":0,
+                              "bet_index":0,
+                              "small_blind":10,
+                              "orbits":0,
+                              "dealer":0,
+                              "community_cards":[],
+                              "current_buy_in":0,
+                              "pot":0
+                            }""")
         self.hole_cards = self.game_state['players'][1]['hole_cards']
         self.hole_cards2 = [
                             {
@@ -129,6 +170,9 @@ class PlayerTest(unittest.TestCase):
       self.assertFalse(is_ace_low_offsuit(self.hole_cards))
       self.assertFalse(is_ace_low_offsuit([dict(rank="A", suit="hearts"), dict(rank="K", suit="hearts")]))
       self.assertTrue(is_ace_low_offsuit([dict(rank="A", suit="hearts"), dict(rank="9", suit="hearts")]))
+
+    def test_bug(self):
+      self.assertEqual(self.player.betRequest(self.game_state2), 0)
 
 if __name__ == "__main__":
     unittest.main()
