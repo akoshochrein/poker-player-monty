@@ -10,6 +10,7 @@ class Player:
         player_index = game_state['in_action']
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
+        suits = [c['suit'] for c in hole_cards]
 
         total_bet = 0
 
@@ -36,6 +37,10 @@ class Player:
         if includes_okay_card(ranks):
             print "okay card"
             total_bet += 200
+
+        if is_same_suit(hole_cards):
+            print "same suit"
+            total_bet += 100
         
         print total_bet, hole_cards
         return int(total_bet)
@@ -45,6 +50,10 @@ class Player:
 
 def is_pair(hole_cards):
     return hole_cards[0]["rank"] == hole_cards[1]["rank"]
+
+
+def is_same_suit(hole_cards):
+    return hole_cards[0]["suit"] == hole_cards[1]["suit"]
 
 
 def includes_good_card(ranks):
