@@ -15,7 +15,6 @@ class Player:
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
         suits = [c['suit'] for c in hole_cards]
-        current_bet_index = get_current_bet_index(game_state)
 
         total_bet = 0
 
@@ -65,10 +64,6 @@ class Player:
         if is_king_flush_draw(hole_cards):
             print "king flush draw: 52-62%"
             total_bet += get_call_value(game_state)
-
-        # if is_part_of_straight(ranks):
-        #     print "two adjacent ranks"
-        #     total_bet += 100
 
         print total_bet, hole_cards
         return int(total_bet)
@@ -127,10 +122,6 @@ def includes_okay_card(ranks):
 
 def is_ace_low_suited(hole_cards):
     return is_same_suit(hole_cards) and includes_ace(hole_cards) and any([RANKS_POINTS[c['rank']] <= 10 for c in hole_cards])
-
-
-def get_current_bet_index(game_state):
-    return game_state['bet_index']
 
 
 def get_call_value(game_state):
