@@ -1,5 +1,5 @@
 import requests
-import simplejson
+import json as simplejson
 
 
 def call_ranking_api(cards):
