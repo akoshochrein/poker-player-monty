@@ -25,9 +25,6 @@ class Player:
             print "good pair -- ALL IN"
             total_bet += 100000000
 
-        if includes_ace(hole_cards) and is_same_suit(hole_cards):
-            total_bet += 100000000
-
         if is_ace_face_suited(hole_cards):
             total_bet += 100000000
 
