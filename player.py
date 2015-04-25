@@ -43,7 +43,6 @@ def includes_good_card(ranks):
 
 
 def includes_high_card(ranks):
-    symbols = ['A', 'K']
     return any(r in HIGH_CARDS for r in ranks)
 
 
