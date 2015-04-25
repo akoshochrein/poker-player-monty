@@ -69,5 +69,11 @@ class PlayerTest(unittest.TestCase):
         self.assertTrue(includes_symbol(['J']))
         self.assertFalse(includes_symbol(['10']))
 
+    def test_includes_high_symbol(self):
+        self.assertTrue(includes_high_symbol(['A']))
+        self.assertTrue(includes_high_symbol(['K']))
+        self.assertFalse(includes_symbol(['10']))
+
+
 if __name__ == "__main__":
     unittest.main()

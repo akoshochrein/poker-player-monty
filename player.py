@@ -7,7 +7,7 @@ class Player:
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
 
-        if includes_symbol(ranks) or is_pair(hole_cards):
+        if includes_high_symbol(ranks) or is_pair(hole_cards):
             print '##### hole hand A'
             return 1000
         return 100
@@ -22,6 +22,11 @@ def is_pair(hole_cards):
 
 def includes_symbol(ranks):
     symbols = ['A', 'K', 'Q', 'J']
+    return any(r in symbols for r in ranks)
+
+
+def includes_high_symbol(ranks):
+    symbols = ['A', 'K']
     return any(r in symbols for r in ranks)
 
 
