@@ -23,3 +23,11 @@ def is_pair(hole_cards):
 def includes_symbol(ranks):
     symbols = ['A', 'K', 'Q', 'J']
     return any(r in symbols for r in ranks)
+
+
+def get_call_value(game_state):
+    return current_buy_in - players[in_action][bet]
+
+
+def get_minimum_raise_value(game_state):
+    return current_buy_in - players[in_action][bet] + minimum_raise
