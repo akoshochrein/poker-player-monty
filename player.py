@@ -8,7 +8,7 @@ HIGH_CARDS = ['A', 'K']
 
 
 class Player:
-    VERSION = "king call"
+    VERSION = "ace low"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
