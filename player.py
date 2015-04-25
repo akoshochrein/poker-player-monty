@@ -37,15 +37,12 @@ class Player:
             print "high card"
             total_bet += 500
 
-        if is_same_suit(hole_cards):
-            print "same suit"
-            total_bet += 100
-        
         print total_bet, hole_cards
         return int(total_bet)
 
     def showdown(self, game_state):
         pass
+
 
 def is_pair(hole_cards):
     return hole_cards[0]["rank"] == hole_cards[1]["rank"]
