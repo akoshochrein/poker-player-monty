@@ -1,9 +1,10 @@
 import unittest
+import simplejson
 from player import *
 
 class PlayerTest(unittest.TestCase):
     def setUp(self):
-        self.game_state = """{
+        self.game_state = simplejson.loads("""{
                               "players":[
                                 {
                                   "name":"Player 1",
@@ -19,11 +20,20 @@ class PlayerTest(unittest.TestCase):
                                   "stack":1000,
                                   "status":"active",
                                   "bet":0,
-                                  "hole_cards":[],
+                                  "hole_cards":[
+                                  {
+                                      "rank": "A",
+                                      "suit": "hearts"
+                                  },
+                                  {
+                                      "rank": "K",
+                                      "suit": "spades"
+                                  }],
                                   "version":"Version name 2",
                                   "id":1
                                 }
                               ],
+                              "in_action": 1,
                               "tournament_id":"550d1d68cd7bd10003000003",
                               "game_id":"550da1cb2d909006e90004b1",
                               "round":0,
@@ -34,7 +44,7 @@ class PlayerTest(unittest.TestCase):
                               "community_cards":[],
                               "current_buy_in":0,
                               "pot":0
-                            }"""
+                            }""")
 
         self.player = Player()
 
@@ -48,6 +58,9 @@ class PlayerTest(unittest.TestCase):
 
         hole_cards_without_pair = [dict(rank="6", suit="hearts"), dict(rank="K", suit="spades")]
         self.assertFalse(is_pair(hole_cards_without_pair))
+
+    def test_hole_cards_hand_high(self):
+        self.assertEqual(self.player.betRequest(self.game_state), 1000)
 
 if __name__ == "__main__":
     unittest.main()
