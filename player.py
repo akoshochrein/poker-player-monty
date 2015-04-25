@@ -29,8 +29,12 @@ class Player:
             print "good pair -- ALL IN"
             total_bet += 100000000
 
+        if is_pair(hole_cards) and includes_okay_card(ranks):
+            print "okay pair -- 65-74% win rate"
+            total_bet += 100000000
+
         if is_ace_face_suited(hole_cards):
-            print "ace face suited"
+            print "ace face suited -- 64-66% win rate"
             total_bet += 100000000
 
         if ace_face_offsuit(ranks, hole_cards):
