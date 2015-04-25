@@ -4,7 +4,7 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "CARD RANKS"
+    VERSION = "fuck ok"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
@@ -33,10 +33,6 @@ class Player:
         if includes_good_card(ranks):
             print "good card"
             total_bet += 300
-
-        if includes_okay_card(ranks):
-            print "okay card"
-            total_bet += 200
 
         if is_same_suit(hole_cards):
             print "same suit"
