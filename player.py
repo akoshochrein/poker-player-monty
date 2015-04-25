@@ -21,31 +21,31 @@ class Player:
         # Follow this! This is our bible!
 
         if is_pair(hole_cards) and includes_high_card(ranks):
-            print "high pair -- ALL IN"
+            print "high pair: 80-85%"
             total_bet += 100000000
 
         if is_pair(hole_cards) and includes_good_card(ranks):
-            print "good pair -- ALL IN"
+            print "medium pair: 65-77%"
             total_bet += 100000000
 
         if is_pair(hole_cards) and includes_okay_card(ranks):
-            print "okay pair -- 65-74% win rate"
+            print "okay pair: 65-74%"
             total_bet += 100000000
 
         if is_ace_face_suited(hole_cards):
-            print "ace face suited -- 64-66% win rate"
+            print "ace face suited: 64-66%"
             total_bet += 100000000
 
         if ace_face_offsuit(ranks, hole_cards):
-            print "ace face offsuit"
+            print "ace face offsuit: 63-65%"
             total_bet += 100000000
 
         if is_ace_low_suited(hole_cards):
-            print "ace low suited - 55-63%"
+            print "ace low suited: 55-63%"
             total_bet += 100000000
 
         if is_face_face_offsuit(hole_cards):
-            print 'face-face offsuit -- 57-60%'
+            print 'face-face offsuit: 57-60%'
             total_bet += 100000000
 
         if is_pair(hole_cards):
