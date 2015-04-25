@@ -12,6 +12,15 @@ class Player:
         ranks = [c['rank'] for c in hole_cards]
 
         total_bet = 0
+
+        if is_pair(hole_cards) and includes_high_card(ranks):
+            print "high pair -- ALL IN"
+            total_bet += 100000000
+
+        if is_pair(hole_cards) and includes_good_card(ranks):
+            print "good pair -- ALL IN"
+            total_bet += 100000000
+
         if is_pair(hole_cards):
             print "pair"
             total_bet += 500
@@ -58,4 +67,3 @@ def get_call_value(game_state):
 def get_minimum_raise_value(game_state):
     player_index = game_state['in_action']
     return game_state['current_buy_in'] - game_state['players'][player_index]['bet'] + game_state['minimum_raise']
-
