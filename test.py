@@ -102,5 +102,8 @@ class PlayerTest(unittest.TestCase):
         self.assertEqual(rank_distance(['K', 'Q']), 1)
         self.assertEqual(rank_distance(['A', 'Q']), 2)
 
+    def test_get_current_round(self):
+        self.assertEqual(get_current_round(self.game_state), 0)
+
 if __name__ == "__main__":
     unittest.main()

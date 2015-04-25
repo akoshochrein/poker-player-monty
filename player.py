@@ -6,18 +6,22 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "fuck good"
+    VERSION = "look at current round"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
         suits = [c['suit'] for c in hole_cards]
+        current_round = get_current_round(game_state)
 
         total_bet = 0
 
         # http://www.holdemsecrets.com/startinghands.htm
         # Follow this! This is our bible!
+
+        if current_round > 0:
+            return total_bet
 
         if is_pair(hole_cards) and includes_high_card(ranks):
             print "high pair -- ALL IN"
@@ -27,8 +31,12 @@ class Player:
             print "good pair -- ALL IN"
             total_bet += 100000000
 
+        if is_pair(hole_cards) and includes_okay_card(ranks):
+            print "okay pair -- 65-74% win rate"
+            total_bet += 100000000
+
         if is_ace_face_suited(hole_cards):
-            print "ace face suited"
+            print "ace face suited -- 64-66% win rate"
             total_bet += 100000000
 
         if ace_face_offsuit(ranks, hole_cards):
@@ -91,6 +99,10 @@ def includes_high_card(ranks):
 
 def includes_okay_card(ranks):
     return any(r in OKAY_CARDS for r in ranks)
+
+
+def get_current_round(game_state):
+    return game_state['round']
 
 
 def get_call_value(game_state):
