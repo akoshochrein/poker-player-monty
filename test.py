@@ -62,5 +62,12 @@ class PlayerTest(unittest.TestCase):
     def test_hole_cards_hand_high(self):
         self.assertEqual(self.player.betRequest(self.game_state), 1000)
 
+    def test_includes_symbol(self):
+        self.assertTrue(includes_symbol(['A']))
+        self.assertTrue(includes_symbol(['K']))
+        self.assertTrue(includes_symbol(['Q']))
+        self.assertTrue(includes_symbol(['J']))
+        self.assertFalse(includes_symbol(['10']))
+
 if __name__ == "__main__":
     unittest.main()
