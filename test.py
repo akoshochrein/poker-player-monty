@@ -95,5 +95,8 @@ class PlayerTest(unittest.TestCase):
         self.assertFalse(ace_face_offsuit(['A', 'A'], [dict(rank="A", suit="hearts"), dict(rank="A", suit="spades")]))
         self.assertFalse(ace_face_offsuit(['K', 'K'], [dict(rank="K", suit="hearts"), dict(rank="K", suit="spades")]))
 
+    def test_get_current_round(self):
+      self.assertEqual(get_current_round(self.game_state), 0)
+
 if __name__ == "__main__":
     unittest.main()

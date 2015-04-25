@@ -11,11 +11,15 @@ class Player:
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
         suits = [c['suit'] for c in hole_cards]
+        current_round = get_current_round(game_state)
 
         total_bet = 0
 
         # http://www.holdemsecrets.com/startinghands.htm
         # Follow this! This is our bible!
+
+        if current_round > 0:
+            return total_bet
 
         if is_pair(hole_cards) and includes_high_card(ranks):
             print "high pair -- ALL IN"
@@ -81,6 +85,10 @@ def includes_high_card(ranks):
 
 def includes_okay_card(ranks):
     return any(r in OKAY_CARDS for r in ranks)
+
+
+def get_current_round(game_state):
+    return game_state['round']
 
 
 def get_call_value(game_state):
