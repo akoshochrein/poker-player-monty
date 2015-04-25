@@ -21,11 +21,11 @@ class Player:
         # Follow this! This is our bible!
 
         if is_pair(hole_cards) and includes_high_card(ranks):
-            print "high pair: 80-85%"
+            print "high pair (A, K): 80-85%"
             total_bet += 100000000
 
         if is_pair(hole_cards) and includes_good_card(ranks):
-            print "medium pair: 65-77%"
+            print "medium pair (Q, J): 77-80%"
             total_bet += 100000000
 
         if is_pair(hole_cards) and includes_okay_card(ranks):
