@@ -30,43 +30,43 @@ class Player:
                 total_bet += 100000000
 
         if is_pair(hole_cards) and includes_high_card(ranks):
-            print "high pair (A, K): 80-85%"
+            print "1. high pair (A, K): 80-85%"
             total_bet += 100000000
 
         if is_pair(hole_cards) and includes_good_card(ranks):
-            print "medium pair (Q, J): 77-80%"
+            print "2. medium pair (Q, J): 77-80%"
             total_bet += 100000000
 
         if is_pair(hole_cards) and includes_okay_card(ranks):
-            print "okay pair: 65-74%"
+            print "2. okay pair: 65-74%"
             total_bet += 100000000
 
         if is_ace_face_suited(hole_cards):
-            print "ace face suited: 64-66%"
+            print "3. ace face suited: 64-66%"
             total_bet += 100000000
 
         if ace_face_offsuit(ranks, hole_cards):
-            print "ace face offsuit: 63-65%"
+            print "4. ace face offsuit: 63-65%"
             total_bet += 100000000
 
         if is_ace_low_suited(hole_cards):
-            print "ace low suited: 55-63%"
+            print "5. ace low suited: 55-63%"
             total_bet += 100000000
 
         if is_face_face_offsuit(hole_cards):
-            print 'face-face offsuit: 57-60%'
+            print '6. face-face offsuit: 57-60%'
             total_bet += 100000000
 
         if is_pair(hole_cards):
-            print "low pair: 49-62%"
+            print "7. low pair: 49-62%"
             total_bet += get_call_value(game_state)
 
         if is_king_flush_draw(hole_cards):
-            print "king flush draw: 52-62%"
+            print "8. king flush draw: 52-62%"
             total_bet += get_call_value(game_state)
 
         if is_ace_low_offsuit(hole_cards):
-            print "ace-low offsuit: 53-61%"
+            print "9. ace-low offsuit: 53-61%"
             total_bet += get_call_value(game_state)
 
         if total_bet == 0 and get_call_value(game_state) < 30:
