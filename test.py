@@ -38,7 +38,7 @@ class PlayerTest(unittest.TestCase):
 
         self.player = Player()
 
-    def test_betRequest(self):
+    def test_betRequest_type_returned_integer(self):
         self.assertEqual(type(self.player.betRequest(self.game_state)), int)
 
 if __name__ == "__main__":
