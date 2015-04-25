@@ -1,3 +1,5 @@
+from ranks_points import rank_distance
+
 SHITTY_CARDS = ['2', '3', '4', '5', '6']
 OKAY_CARDS = ['7', '8', '9', '10']
 GOOD_CARDS = ['Q', 'J']
@@ -41,6 +43,10 @@ class Player:
             print "high card"
             total_bet += 200
 
+        if is_part_of_straight(ranks):
+            print "two adjacent ranks"
+            total_bet += 100
+
         print total_bet, hole_cards
         return int(total_bet)
 
@@ -62,6 +68,10 @@ def includes_ace(hole_cards):
     if hole_cards[1]['rank'] == 'A':
         return True
     return False
+
+
+def is_part_of_straight(ranks):
+    return rank_distance(ranks) == 1
 
 
 def is_ace_face_suited(hole_cards):

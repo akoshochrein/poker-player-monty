@@ -1,6 +1,7 @@
 import unittest
 import json as simplejson
 from player import *
+from ranks_points import rank_distance
 
 class PlayerTest(unittest.TestCase):
     def setUp(self):
@@ -94,6 +95,12 @@ class PlayerTest(unittest.TestCase):
         self.assertFalse(ace_face_offsuit(['A', '10'], [dict(rank="A", suit="hearts"), dict(rank="K", suit="spades")]))
         self.assertFalse(ace_face_offsuit(['A', 'A'], [dict(rank="A", suit="hearts"), dict(rank="A", suit="spades")]))
         self.assertFalse(ace_face_offsuit(['K', 'K'], [dict(rank="K", suit="hearts"), dict(rank="K", suit="spades")]))
+
+    def test_ranks_distance(self):
+        self.assertEqual(rank_distance(['2', '3']), 1)
+        self.assertEqual(rank_distance(['3', '2']), 1)
+        self.assertEqual(rank_distance(['K', 'Q']), 1)
+        self.assertEqual(rank_distance(['A', 'Q']), 2)
 
 if __name__ == "__main__":
     unittest.main()
