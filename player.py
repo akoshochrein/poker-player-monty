@@ -53,11 +53,11 @@ class Player:
 
         if is_pair(hole_cards):
             print "pair"
-            total_bet += get_minimum_raise_value(game_state)
+            total_bet += get_call_value(game_state)
 
-        if is_part_of_straight(ranks):
-            print "two adjacent ranks"
-            total_bet += 100
+        # if is_part_of_straight(ranks):
+        #     print "two adjacent ranks"
+        #     total_bet += 100
 
         print total_bet, hole_cards
         return int(total_bet)
