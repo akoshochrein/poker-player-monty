@@ -8,7 +8,7 @@ HIGH_CARDS = ['A', 'K']
 
 
 class Player:
-    VERSION = "cleaner"
+    VERSION = "comment out"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
