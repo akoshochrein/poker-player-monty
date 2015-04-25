@@ -6,22 +6,19 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "more betting"
+    VERSION = "remove shit"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
         suits = [c['suit'] for c in hole_cards]
-        current_bet = get_current_bet_index(game_state)
+        current_bet_index = get_current_bet_index(game_state)
 
         total_bet = 0
 
         # http://www.holdemsecrets.com/startinghands.htm
         # Follow this! This is our bible!
-
-        if current_bet > 1:
-            return total_bet
 
         if is_pair(hole_cards) and includes_high_card(ranks):
             print "high pair -- ALL IN"
@@ -116,6 +113,7 @@ def includes_okay_card(ranks):
 
 def is_ace_low_suited(hole_cards):
     return is_same_suit(hole_cards) and includes_ace(hole_cards) and any([RANKS_POINTS[c['rank']] <= 10 for c in hole_cards])
+
 
 def get_current_bet_index(game_state):
     return game_state['bet_index']
