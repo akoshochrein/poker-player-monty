@@ -24,8 +24,10 @@ class Player:
 
         community_cards = game_state['community_cards']
         if community_cards:
+            print "Community cards are out, going to request rank from ranking API"
             ranking = call_ranking_api(hole_cards + community_cards)
             if ranking['rank'] > 3:
+                print "Rank is higher than 3, going all in"
                 total_bet += 100000000
 
         if is_pair(hole_cards) and includes_high_card(ranks):
