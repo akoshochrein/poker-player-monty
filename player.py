@@ -8,7 +8,7 @@ HIGH_CARDS = ['A', 'K']
 
 
 class Player:
-    VERSION = "comment out"
+    VERSION = "comment in"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
@@ -72,8 +72,8 @@ class Player:
             print "9. ace-low offsuit: 53-61%"
             total_bet += get_call_value(game_state)
 
-        # if total_bet == 0 and get_call_value(game_state) < 30:
-        #     total_bet = get_call_value(game_state)
+        if total_bet == 0 and get_call_value(game_state) < 30:
+            total_bet = get_call_value(game_state)
 
         print total_bet, hole_cards
         return int(total_bet)

@@ -47,46 +47,112 @@ class PlayerTest(unittest.TestCase):
                               "pot":0
                             }""")
         self.game_state2 = simplejson.loads("""{
-                              "players":[
-                                {
-                                  "name":"Player 1",
-                                  "stack":1000,
-                                  "status":"active",
-                                  "bet":0,
-                                  "hole_cards":[],
-                                  "version":"Version name 1",
-                                  "id":0
-                                },
-                                {
-                                  "name":"Player 2",
-                                  "stack":1000,
-                                  "status":"active",
-                                  "bet":0,
-                                  "hole_cards":[
-                                  {
-                                      "rank": "7",
-                                      "suit": "hearts"
-                                  },
-                                  {
-                                      "rank": "9",
-                                      "suit": "spades"
-                                  }],
-                                  "version":"Version name 2",
-                                  "id":1
-                                }
-                              ],
-                              "in_action": 1,
-                              "tournament_id":"550d1d68cd7bd10003000003",
-                              "game_id":"550da1cb2d909006e90004b1",
-                              "round":0,
-                              "bet_index":0,
-                              "small_blind":10,
-                              "orbits":0,
-                              "dealer":0,
-                              "community_cards":[],
-                              "current_buy_in":0,
-                              "pot":0
-                            }""")
+      "players": [
+        {
+          "name": "Deal With It",
+          "stack": 0,
+          "status": "out",
+          "bet": 0,
+          "hole_cards": [
+            
+          ],
+          "version": "Deal With It - Super awesomeness",
+          "id": 0
+        },
+        {
+          "name": "PokerFace",
+          "stack": 970,
+          "status": "active",
+          "bet": 10,
+          "hole_cards": [
+            {
+              "rank": "A",
+              "suit": "hearts"
+            },
+            {
+              "rank": "2",
+              "suit": "spades"
+            }
+          ],
+          "version": "Default JavaScript folding player",
+          "id": 1
+        },
+        {
+          "name": "Bilzerian",
+          "stack": 0,
+          "status": "out",
+          "bet": 0,
+          "hole_cards": [
+            
+          ],
+          "version": "Call me maybe",
+          "id": 2
+        },
+        {
+          "name": "Jarsays",
+          "stack": 670,
+          "status": "active",
+          "bet": 20,
+          "hole_cards": [
+            {
+              "rank": "5",
+              "suit": "diamonds"
+            },
+            {
+              "rank": "3",
+              "suit": "spades"
+            }
+          ],
+          "version": "Default Java folding player",
+          "id": 3
+        },
+        {
+          "name": "Monty",
+          "stack": 1360,
+          "status": "active",
+          "bet": 1000,
+          "hole_cards": [
+            {
+              "rank": "7",
+              "suit": "hearts"
+            },
+            {
+              "rank": "9",
+              "suit": "spades"
+            }
+          ],
+          "version": "Default Python folding player",
+          "id": 4
+        },
+        {
+          "name": "All In",
+          "stack": 970,
+          "status": "active",
+          "bet": 0,
+          "hole_cards": [
+            {
+              "rank": "4",
+              "suit": "diamonds"
+            },
+            {
+              "rank": "4",
+              "suit": "clubs"
+            }
+          ],
+          "version": "Default Java folding player",
+          "id": 5
+        }
+      ],
+      "in_action": 4,
+      "small_blind": 10,
+      "orbits": 0,
+      "dealer": 5,
+      "community_cards": [
+        
+      ],
+      "current_buy_in": 1000,
+      "pot": 1030
+    }""")
         self.hole_cards = self.game_state['players'][1]['hole_cards']
         self.hole_cards2 = [
                             {
