@@ -47,10 +47,6 @@ class Player:
             print "pair"
             total_bet += get_minimum_raise_value(game_state)
 
-        if includes_high_card(ranks):
-            print "high card"
-            total_bet += 200
-
         if is_part_of_straight(ranks):
             print "two adjacent ranks"
             total_bet += 100
