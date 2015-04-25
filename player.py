@@ -8,14 +8,13 @@ HIGH_CARDS = ['A', 'K']
 
 
 class Player:
-    VERSION = "king call"
+    VERSION = "ace low"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
         suits = [c['suit'] for c in hole_cards]
-        current_bet_index = get_current_bet_index(game_state)
 
         total_bet = 0
 
@@ -64,6 +63,10 @@ class Player:
 
         if is_king_flush_draw(hole_cards):
             print "king flush draw: 52-62%"
+            total_bet += get_call_value(game_state)
+
+        if is_ace_low_offsuit(hole_cards):
+            print "ace-low offsuit: 53-61%"
             total_bet += get_call_value(game_state)
 
         if total_bet == 0 and get_call_value(game_state) < 30:
@@ -128,10 +131,6 @@ def is_ace_low_suited(hole_cards):
     return is_same_suit(hole_cards) and includes_ace(hole_cards) and any([RANKS_POINTS[c['rank']] <= 10 for c in hole_cards])
 
 
-def get_current_bet_index(game_state):
-    return game_state['bet_index']
-
-
 def get_call_value(game_state):
     player_index = game_state['in_action']
     return game_state['current_buy_in'] - game_state['players'][player_index]['bet']
@@ -151,3 +150,9 @@ def is_king_flush_draw(hole_cards):
     ranks = [c['rank'] for c in hole_cards]
     has_king = "K" in ranks
     return is_same_suit(hole_cards) and has_king
+
+def is_ace_low_offsuit(hole_cards):
+    other_card = ['7', '8', '9', '10', 'J']
+    ranks = [c['rank'] for c in hole_cards]
+    has_other_card = any(r in other_card for r in ranks)
+    return includes_ace(hole_cards) and is_same_suit(hole_cards) and has_other_card

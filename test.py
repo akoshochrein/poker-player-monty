@@ -116,9 +116,6 @@ class PlayerTest(unittest.TestCase):
         self.assertEqual(rank_distance(['K', 'Q']), 1)
         self.assertEqual(rank_distance(['A', 'Q']), 2)
 
-    def test_get_current_bet_index(self):
-        self.assertEqual(get_current_bet_index(self.game_state), 0)
-
     def test_is_face_face_offsuit(self):
         self.assertFalse(is_face_face_offsuit(self.hole_cards))
         self.assertTrue(is_face_face_offsuit(self.hole_cards3))
@@ -127,6 +124,11 @@ class PlayerTest(unittest.TestCase):
     def test_is_king_flush_draw(self):
         self.assertFalse(is_king_flush_draw(self.hole_cards))
         self.assertTrue(is_king_flush_draw([dict(rank="J", suit="hearts"), dict(rank="K", suit="hearts")]))
+
+    def test_is_ace_low_offsuit(self):
+      self.assertFalse(is_ace_low_offsuit(self.hole_cards))
+      self.assertFalse(is_ace_low_offsuit([dict(rank="A", suit="hearts"), dict(rank="K", suit="hearts")]))
+      self.assertTrue(is_ace_low_offsuit([dict(rank="A", suit="hearts"), dict(rank="9", suit="hearts")]))
 
 if __name__ == "__main__":
     unittest.main()
