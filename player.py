@@ -6,7 +6,7 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "look at current round"
+    VERSION = "face-face"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
