@@ -6,7 +6,7 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "remove shit"
+    VERSION = "king flush"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
@@ -49,8 +49,12 @@ class Player:
             total_bet += 100000000
 
         if is_pair(hole_cards):
-            print "pair"
+            print "low pair: 49-62%"
             total_bet += get_call_value(game_state)
+
+        if is_king_flush_draw(hole_cards):
+            print "king flush draw: 52-62%"
+            total_bet += 100000000
 
         # if is_part_of_straight(ranks):
         #     print "two adjacent ranks"
@@ -132,3 +136,9 @@ def get_minimum_raise_value(game_state):
 def ace_face_offsuit(ranks, hole_cards):
     different_suit = not is_same_suit(hole_cards)
     return different_suit and 'A' in ranks and any(r in ['K', 'Q', 'J'] for r in ranks)
+
+
+def is_king_flush_draw(hole_cards):
+    ranks = [c['rank'] for c in hole_cards]
+    has_king = "K" in ranks
+    return is_same_suit(hole_cards) and has_king

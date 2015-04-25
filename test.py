@@ -124,5 +124,9 @@ class PlayerTest(unittest.TestCase):
         self.assertTrue(is_face_face_offsuit(self.hole_cards3))
         self.assertTrue(is_face_face_offsuit([dict(rank="J", suit="hearts"), dict(rank="K", suit="diamonds")]))
 
+    def test_is_king_flush_draw(self):
+        self.assertFalse(is_king_flush_draw(self.hole_cards))
+        self.assertTrue(is_king_flush_draw([dict(rank="J", suit="hearts"), dict(rank="K", suit="hearts")]))
+
 if __name__ == "__main__":
     unittest.main()
