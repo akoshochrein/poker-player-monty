@@ -116,12 +116,13 @@ class PlayerTest(unittest.TestCase):
         self.assertEqual(rank_distance(['K', 'Q']), 1)
         self.assertEqual(rank_distance(['A', 'Q']), 2)
 
-    def test_get_current_round(self):
-        self.assertEqual(get_current_round(self.game_state), 0)
+    def test_get_current_bet_index(self):
+        self.assertEqual(get_current_bet_index(self.game_state), 0)
 
     def test_is_face_face_offsuit(self):
         self.assertFalse(is_face_face_offsuit(self.hole_cards))
         self.assertTrue(is_face_face_offsuit(self.hole_cards3))
+        self.assertTrue(is_face_face_offsuit([dict(rank="J", suit="hearts"), dict(rank="K", suit="diamonds")]))
 
 if __name__ == "__main__":
     unittest.main()

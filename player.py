@@ -13,14 +13,14 @@ class Player:
         hole_cards = game_state['players'][player_index]['hole_cards']
         ranks = [c['rank'] for c in hole_cards]
         suits = [c['suit'] for c in hole_cards]
-        current_round = get_current_round(game_state)
+        current_bet = get_current_bet_index(game_state)
 
         total_bet = 0
 
         # http://www.holdemsecrets.com/startinghands.htm
         # Follow this! This is our bible!
 
-        if current_round > 1:
+        if current_bet > 1:
             return total_bet
 
         if is_pair(hole_cards) and includes_high_card(ranks):
@@ -117,8 +117,8 @@ def includes_okay_card(ranks):
 def is_ace_low_suited(hole_cards):
     return is_same_suit(hole_cards) and includes_ace(hole_cards) and any([RANKS_POINTS[c['rank']] <= 10 for c in hole_cards])
 
-def get_current_round(game_state):
-    return game_state['round']
+def get_current_bet_index(game_state):
+    return game_state['bet_index']
 
 
 def get_call_value(game_state):
