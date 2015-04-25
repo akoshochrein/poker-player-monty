@@ -1,4 +1,3 @@
-
 class Player:
     VERSION = "NO FOLDS LOL"
 
@@ -15,7 +14,6 @@ class Player:
     def showdown(self, game_state):
         pass
 
-
 def is_pair(hole_cards):
     return hole_cards[0]["rank"] == hole_cards[1]["rank"]
 
@@ -31,8 +29,11 @@ def includes_high_symbol(ranks):
 
 
 def get_call_value(game_state):
-    return current_buy_in - players[in_action][bet]
+    player_index = game_state['in_action']
+    return game_state['current_buy_in'] - game_state['players'][player_index]['bet']
 
 
 def get_minimum_raise_value(game_state):
-    return current_buy_in - players[in_action][bet] + minimum_raise
+    player_index = game_state['in_action']
+    return game_state['current_buy_in'] - game_state['players'][player_index]['bet'] + game_state['minimum_raise']
+

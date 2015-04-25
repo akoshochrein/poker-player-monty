@@ -1,5 +1,5 @@
 import unittest
-import simplejson
+import json as simplejson
 from player import *
 
 class PlayerTest(unittest.TestCase):
@@ -49,18 +49,21 @@ class PlayerTest(unittest.TestCase):
         self.player = Player()
 
     def test_betRequest_type_returned_integer(self):
-        self.assertEqual(type(self.player.betRequest(self.game_state)), int)
+      self.assertEqual(type(self.player.betRequest(self.game_state)), int)
 
     def test_is_pair(self):
-        hole_cards_with_pair = [dict(rank="6", suit="hearts"), dict(rank="6", suit="spades")]
+      hole_cards_with_pair = [dict(rank="6", suit="hearts"), dict(rank="6", suit="spades")]
 
-        self.assertTrue(is_pair(hole_cards_with_pair))
+      self.assertTrue(is_pair(hole_cards_with_pair))
 
-        hole_cards_without_pair = [dict(rank="6", suit="hearts"), dict(rank="K", suit="spades")]
-        self.assertFalse(is_pair(hole_cards_without_pair))
+      hole_cards_without_pair = [dict(rank="6", suit="hearts"), dict(rank="K", suit="spades")]
+      self.assertFalse(is_pair(hole_cards_without_pair))
 
     def test_hole_cards_hand_high(self):
-        self.assertEqual(self.player.betRequest(self.game_state), 1000)
+      self.assertEqual(self.player.betRequest(self.game_state), 1000)
+
+    def test_get_call_value(self):
+      self.assertEqual(get_call_value(self.game_state), 0)
 
     def test_includes_symbol(self):
         self.assertTrue(includes_symbol(['A']))
