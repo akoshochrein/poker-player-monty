@@ -1,9 +1,11 @@
 from ranks_points import rank_distance, RANKS_POINTS
+from ranking_api import call_ranking_api
 
 SHITTY_CARDS = ['2', '3', '4', '5', '6']
 OKAY_CARDS = ['7', '8', '9', '10']
 GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
+
 
 class Player:
     VERSION = "king call"
@@ -19,6 +21,12 @@ class Player:
 
         # http://www.holdemsecrets.com/startinghands.htm
         # Follow this! This is our bible!
+
+        community_cards = game_state['community_cards']
+        if community_cards:
+            ranking = call_ranking_api(hole_cards + community_cards)
+            if ranking['rank'] > 3:
+                total_bet += 100000000
 
         if is_pair(hole_cards) and includes_high_card(ranks):
             print "high pair (A, K): 80-85%"
