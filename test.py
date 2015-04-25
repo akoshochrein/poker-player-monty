@@ -46,6 +46,15 @@ class PlayerTest(unittest.TestCase):
                               "pot":0
                             }""")
         self.hole_cards = self.game_state['players'][1]['hole_cards']
+        self.hole_cards2 = [
+                            {
+                                "rank": "A",
+                                "suit": "hearts"
+                            },
+                            {
+                                "rank": "K",
+                                "suit": "hearts"
+                            }]
         self.player = Player()
 
     def test_betRequest_type_returned_integer(self):
@@ -76,6 +85,12 @@ class PlayerTest(unittest.TestCase):
     def test_is_same_suit(self):
       self.assertFalse(is_same_suit(self.hole_cards))
 
+    def test_includes_ace(self):
+      self.assertTrue(includes_ace(self.hole_cards))
+
+    def test_is_ace_face_suited(self):
+      self.assertFalse(is_ace_face_suited(self.hole_cards))
+      self.assertTrue(is_ace_face_suited(self.hole_cards2))
 
 if __name__ == "__main__":
     unittest.main()

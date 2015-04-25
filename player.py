@@ -22,6 +22,12 @@ class Player:
             print "good pair -- ALL IN"
             total_bet += 100000000
 
+        if includes_ace(hole_cards) and is_same_suit(hole_cards):
+            total_bet += 100000000
+
+        if is_ace_face_suited(hole_cards):
+            total_bet += 100000000
+
         if is_pair(hole_cards):
             print "pair"
             total_bet += 500
@@ -50,6 +56,21 @@ def is_pair(hole_cards):
 
 def is_same_suit(hole_cards):
     return hole_cards[0]["suit"] == hole_cards[1]["suit"]
+
+
+def includes_ace(hole_cards):
+    if hole_cards[0]['rank'] == 'A':
+        return True
+    if hole_cards[1]['rank'] == 'A':
+        return True
+    return False
+
+
+def is_ace_face_suited(hole_cards):
+    other_pair = ['K', 'Q', 'J']
+    ranks = [c['rank'] for c in hole_cards]
+    includes_other = any(r in other_pair for r in ranks)
+    return (includes_ace(hole_cards) and includes_other) and is_same_suit(hole_cards)
 
 
 def includes_good_card(ranks):
