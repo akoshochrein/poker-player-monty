@@ -28,6 +28,7 @@ class Player:
             print "okay card"
             total_bet += 200
         
+        print total_bet, hole_cards
         return int(total_bet)
 
     def showdown(self, game_state):
