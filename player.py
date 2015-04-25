@@ -9,7 +9,7 @@ class Player:
         if includes_high_symbol(ranks) or is_pair(hole_cards):
             print '##### hole hand A'
             return 1000
-        return 100
+        return 0
 
     def showdown(self, game_state):
         pass
