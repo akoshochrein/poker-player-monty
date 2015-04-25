@@ -29,13 +29,17 @@ class Player:
             print "ace face suited"
             total_bet += 100000000
 
+        if ace_face_offsuit(ranks, hole_cards):
+            print "ace face offsuit"
+            total_bet += 100000000
+
         if is_pair(hole_cards):
             print "pair"
-            total_bet += 500
+            total_bet += get_minimum_raise_value(game_state)
 
         if includes_high_card(ranks):
             print "high card"
-            total_bet += 500
+            total_bet += 200
 
         print total_bet, hole_cards
         return int(total_bet)

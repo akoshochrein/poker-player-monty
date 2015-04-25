@@ -67,9 +67,6 @@ class PlayerTest(unittest.TestCase):
       hole_cards_without_pair = [dict(rank="6", suit="hearts"), dict(rank="K", suit="spades")]
       self.assertFalse(is_pair(hole_cards_without_pair))
 
-    def test_hole_cards_hand_high(self):
-      self.assertEqual(self.player.betRequest(self.game_state), 500)
-
     def test_get_call_value(self):
       self.assertEqual(get_call_value(self.game_state), 0)
 
