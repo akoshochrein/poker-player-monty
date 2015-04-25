@@ -45,7 +45,7 @@ class PlayerTest(unittest.TestCase):
                               "current_buy_in":0,
                               "pot":0
                             }""")
-
+        self.hole_cards = self.game_state['players'][1]['hole_cards']
         self.player = Player()
 
     def test_betRequest_type_returned_integer(self):
@@ -53,7 +53,6 @@ class PlayerTest(unittest.TestCase):
 
     def test_is_pair(self):
       hole_cards_with_pair = [dict(rank="6", suit="hearts"), dict(rank="6", suit="spades")]
-
       self.assertTrue(is_pair(hole_cards_with_pair))
 
       hole_cards_without_pair = [dict(rank="6", suit="hearts"), dict(rank="K", suit="spades")]
@@ -66,13 +65,16 @@ class PlayerTest(unittest.TestCase):
       self.assertEqual(get_call_value(self.game_state), 0)
 
     def test_includes_high_card(self):
-        self.assertTrue(includes_high_card(['A']))
-        self.assertTrue(includes_high_card(['K']))
+      self.assertTrue(includes_high_card(['A']))
+      self.assertTrue(includes_high_card(['K']))
 
     def test_includes_good_card(self):
-        self.assertTrue(includes_good_card(['Q']))
-        self.assertTrue(includes_good_card(['J']))
-        self.assertFalse(includes_good_card(['10']))
+      self.assertTrue(includes_good_card(['Q']))
+      self.assertTrue(includes_good_card(['J']))
+      self.assertFalse(includes_good_card(['10']))
+
+    def test_is_same_suit(self):
+      self.assertFalse(is_same_suit(self.hole_cards))
 
 
 if __name__ == "__main__":
