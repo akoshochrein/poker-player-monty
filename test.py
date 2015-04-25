@@ -60,22 +60,19 @@ class PlayerTest(unittest.TestCase):
       self.assertFalse(is_pair(hole_cards_without_pair))
 
     def test_hole_cards_hand_high(self):
-      self.assertEqual(self.player.betRequest(self.game_state), 1000)
+      self.assertEqual(self.player.betRequest(self.game_state), 500)
 
     def test_get_call_value(self):
       self.assertEqual(get_call_value(self.game_state), 0)
 
-    def test_includes_symbol(self):
-        self.assertTrue(includes_symbol(['A']))
-        self.assertTrue(includes_symbol(['K']))
-        self.assertTrue(includes_symbol(['Q']))
-        self.assertTrue(includes_symbol(['J']))
-        self.assertFalse(includes_symbol(['10']))
+    def test_includes_high_card(self):
+        self.assertTrue(includes_high_card(['A']))
+        self.assertTrue(includes_high_card(['K']))
 
-    def test_includes_high_symbol(self):
-        self.assertTrue(includes_high_symbol(['A']))
-        self.assertTrue(includes_high_symbol(['K']))
-        self.assertFalse(includes_symbol(['10']))
+    def test_includes_good_card(self):
+        self.assertTrue(includes_good_card(['Q']))
+        self.assertTrue(includes_good_card(['J']))
+        self.assertFalse(includes_good_card(['10']))
 
 
 if __name__ == "__main__":
