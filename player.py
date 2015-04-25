@@ -6,7 +6,7 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "zero to one"
+    VERSION = "more betting"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
