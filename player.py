@@ -26,6 +26,7 @@ class Player:
             total_bet += 100000000
 
         if is_ace_face_suited(hole_cards):
+            print "ace face suited"
             total_bet += 100000000
 
         if is_pair(hole_cards):
