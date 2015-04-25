@@ -92,5 +92,11 @@ class PlayerTest(unittest.TestCase):
       self.assertFalse(is_ace_face_suited(self.hole_cards))
       self.assertTrue(is_ace_face_suited(self.hole_cards2))
 
+    def test_ace_face_offsuit(self):
+        self.assertTrue(ace_face_offsuit(['A', 'K'], [dict(rank="A", suit="hearts"), dict(rank="K", suit="spades")]))
+        self.assertFalse(ace_face_offsuit(['A', '10'], [dict(rank="A", suit="hearts"), dict(rank="K", suit="spades")]))
+        self.assertFalse(ace_face_offsuit(['A', 'A'], [dict(rank="A", suit="hearts"), dict(rank="A", suit="spades")]))
+        self.assertFalse(ace_face_offsuit(['K', 'K'], [dict(rank="K", suit="hearts"), dict(rank="K", suit="spades")]))
+
 if __name__ == "__main__":
     unittest.main()

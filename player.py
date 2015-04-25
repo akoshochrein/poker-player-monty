@@ -14,6 +14,9 @@ class Player:
 
         total_bet = 0
 
+        # http://www.holdemsecrets.com/startinghands.htm
+        # Follow this! This is our bible!
+
         if is_pair(hole_cards) and includes_high_card(ranks):
             print "high pair -- ALL IN"
             total_bet += 100000000
@@ -93,3 +96,8 @@ def get_call_value(game_state):
 def get_minimum_raise_value(game_state):
     player_index = game_state['in_action']
     return game_state['current_buy_in'] - game_state['players'][player_index]['bet'] + game_state['minimum_raise']
+
+
+def ace_face_offsuit(ranks, hole_cards):
+    different_suit = not is_same_suit(hole_cards)
+    return different_suit and 'A' in ranks and any(r in ['K', 'Q', 'J'] for r in ranks)
