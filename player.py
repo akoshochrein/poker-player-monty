@@ -20,7 +20,7 @@ class Player:
         # http://www.holdemsecrets.com/startinghands.htm
         # Follow this! This is our bible!
 
-        if current_round > 0:
+        if current_round > 1:
             return total_bet
 
         if is_pair(hole_cards) and includes_high_card(ranks):
