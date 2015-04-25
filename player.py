@@ -65,6 +65,10 @@ class Player:
             print "king flush draw: 52-62%"
             total_bet += get_call_value(game_state)
 
+        if is_ace_low_offsuit(hole_cards):
+            print "ace-low offsuit: 53-61%"
+            total_bet += get_call_value(game_state)
+
         print total_bet, hole_cards
         return int(total_bet)
 
@@ -143,3 +147,9 @@ def is_king_flush_draw(hole_cards):
     ranks = [c['rank'] for c in hole_cards]
     has_king = "K" in ranks
     return is_same_suit(hole_cards) and has_king
+
+def is_ace_low_offsuit(hole_cards):
+    other_card = ['7', '8', '9', '10', 'J']
+    ranks = [c['rank'] for c in hole_cards]
+    has_other_card = any(r in other_card for r in ranks)
+    return includes_ace(hole_cards) and is_same_suit(hole_cards) and has_other_card
