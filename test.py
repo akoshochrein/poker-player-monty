@@ -56,6 +56,15 @@ class PlayerTest(unittest.TestCase):
                                 "rank": "K",
                                 "suit": "hearts"
                             }]
+        self.hole_cards3 = [
+                            {
+                                "rank": "Q",
+                                "suit": "hearts"
+                            },
+                            {
+                                "rank": "K",
+                                "suit": "hearts"
+                            }]
         self.player = Player()
 
     def test_betRequest_type_returned_integer(self):
@@ -109,6 +118,10 @@ class PlayerTest(unittest.TestCase):
 
     def test_get_current_round(self):
         self.assertEqual(get_current_round(self.game_state), 0)
+
+    def test_is_face_face_offsuit(self):
+        self.assertFalse(is_face_face_offsuit(self.hole_cards))
+        self.assertTrue(is_face_face_offsuit(self.hole_cards3))
 
 if __name__ == "__main__":
     unittest.main()

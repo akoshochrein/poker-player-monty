@@ -47,6 +47,10 @@ class Player:
             print "ace low suited - 55-63%"
             total_bet += 100000000
 
+        if is_face_face_offsuit(hole_cards):
+            print 'face-face offsuit -- 57-60%'
+            total_bet += 100000000
+
         if is_pair(hole_cards):
             print "pair"
             total_bet += get_minimum_raise_value(game_state)
@@ -87,6 +91,15 @@ def is_ace_face_suited(hole_cards):
     ranks = [c['rank'] for c in hole_cards]
     includes_other = any(r in other_pair for r in ranks)
     return (includes_ace(hole_cards) and includes_other) and is_same_suit(hole_cards)
+
+
+def is_face_face_offsuit(hole_cards):
+    ranks = [c['rank'] for c in hole_cards]
+    if 'K' in ranks and ('Q' in ranks or 'J' in ranks):
+        return True
+    if 'Q' in ranks and 'J' in ranks:
+        return True
+    return False
 
 
 def includes_good_card(ranks):
