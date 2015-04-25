@@ -1,4 +1,4 @@
-from ranks_points import rank_distance
+from ranks_points import rank_distance, RANKS_POINTS
 
 SHITTY_CARDS = ['2', '3', '4', '5', '6']
 OKAY_CARDS = ['7', '8', '9', '10']
@@ -41,6 +41,10 @@ class Player:
 
         if ace_face_offsuit(ranks, hole_cards):
             print "ace face offsuit"
+            total_bet += 100000000
+
+        if is_ace_low_suited(hole_cards):
+            print "ace low suited - 55-63%"
             total_bet += 100000000
 
         if is_pair(hole_cards):
@@ -96,6 +100,9 @@ def includes_high_card(ranks):
 def includes_okay_card(ranks):
     return any(r in OKAY_CARDS for r in ranks)
 
+
+def is_ace_low_suited(hole_cards):
+    return is_same_suit(hole_cards) and includes_ace(hole_cards) and any([RANKS_POINTS[c['rank']] <= 10 for c in hole_cards])
 
 def get_current_round(game_state):
     return game_state['round']

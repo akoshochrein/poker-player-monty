@@ -96,6 +96,11 @@ class PlayerTest(unittest.TestCase):
         self.assertFalse(ace_face_offsuit(['A', 'A'], [dict(rank="A", suit="hearts"), dict(rank="A", suit="spades")]))
         self.assertFalse(ace_face_offsuit(['K', 'K'], [dict(rank="K", suit="hearts"), dict(rank="K", suit="spades")]))
 
+    def test_ace_low_suited(self):
+        self.assertTrue(is_ace_low_suited([dict(rank="A", suit="hearts"), dict(rank="2", suit="hearts")]))
+        self.assertFalse(is_ace_low_suited([dict(rank="A", suit="hearts"), dict(rank="2", suit="spades")]))
+        self.assertFalse(is_ace_low_suited([dict(rank="A", suit="hearts"), dict(rank="K", suit="hearts")]))
+
     def test_ranks_distance(self):
         self.assertEqual(rank_distance(['2', '3']), 1)
         self.assertEqual(rank_distance(['3', '2']), 1)
