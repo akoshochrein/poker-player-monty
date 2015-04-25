@@ -4,7 +4,7 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "NO FOLDS LOL"
+    VERSION = "CARD RANKS"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
