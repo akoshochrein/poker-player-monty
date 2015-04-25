@@ -47,6 +47,9 @@ class PlayerTest(unittest.TestCase):
                               "pot":0
                             }""")
         self.game_state2 = simplejson.loads("""{
+      "tournament_id": "553b3cbffdccaa0003000003",
+      "game_id": "553b4a9d74a7e60003000001",
+      "round": 3,
       "players": [
         {
           "name": "Deal With It",
@@ -108,9 +111,9 @@ class PlayerTest(unittest.TestCase):
         },
         {
           "name": "Monty",
-          "stack": 1360,
+          "stack": 2360,
           "status": "active",
-          "bet": 1000,
+          "bet": 0,
           "hole_cards": [
             {
               "rank": "7",
@@ -150,8 +153,8 @@ class PlayerTest(unittest.TestCase):
       "community_cards": [
         
       ],
-      "current_buy_in": 1000,
-      "pot": 1030
+      "current_buy_in": 20,
+      "pot": 30
     }""")
         self.hole_cards = self.game_state['players'][1]['hole_cards']
         self.hole_cards2 = [
@@ -238,7 +241,7 @@ class PlayerTest(unittest.TestCase):
       self.assertTrue(is_ace_low_offsuit([dict(rank="A", suit="hearts"), dict(rank="9", suit="hearts")]))
 
     def test_bug(self):
-      self.assertEqual(self.player.betRequest(self.game_state2), 0)
+      self.assertEqual(self.player.betRequest(self.game_state2), 20)
 
 if __name__ == "__main__":
     unittest.main()
