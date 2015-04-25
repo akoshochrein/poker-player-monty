@@ -6,7 +6,7 @@ GOOD_CARDS = ['Q', 'J']
 HIGH_CARDS = ['A', 'K']
 
 class Player:
-    VERSION = "king flush"
+    VERSION = "king call"
 
     def betRequest(self, game_state):
         player_index = game_state['in_action']
@@ -54,7 +54,7 @@ class Player:
 
         if is_king_flush_draw(hole_cards):
             print "king flush draw: 52-62%"
-            total_bet += 100000000
+            total_bet += get_call_value(game_state)
 
         # if is_part_of_straight(ranks):
         #     print "two adjacent ranks"
