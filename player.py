@@ -66,9 +66,8 @@ class Player:
             print "king flush draw: 52-62%"
             total_bet += get_call_value(game_state)
 
-        # if is_part_of_straight(ranks):
-        #     print "two adjacent ranks"
-        #     total_bet += 100
+        if total_bet == 0 and get_call_value(game_state) < 30:
+            total_bet = get_call_value(game_state)
 
         print total_bet, hole_cards
         return int(total_bet)
